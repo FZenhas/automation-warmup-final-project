@@ -1,0 +1,22 @@
+{
+  "name": "automation-warmup-final-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FZenhas/automation-warmup-final-project.git"
+  },
+  "keywords": [],
+  "author": "Filipa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FZenhas/automation-warmup-final-project/issues"
+  },
+  "homepage": "https://github.com/FZenhas/automation-warmup-final-project#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.1"
+  }
+}
