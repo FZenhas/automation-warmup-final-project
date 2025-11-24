@@ -1,7 +1,7 @@
 import { test } from "@playwright/test";
 import { StorePage } from "./pages/store.page";
 import { CatalogPage } from "./pages/catalog.page";
-import { ADD_CART } from "./data/store.data";
+import { ADD_CART } from "./data/catalog.data";
 
 test.describe("Store Catalog", () => {
   test("Store | Calalog", async ({ page }) => {

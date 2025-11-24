@@ -1,15 +1,17 @@
 import { expect, test } from "@playwright/test";
 
+
 export class StorePage {
   constructor(page) {
     this.page = page;
+   
 
     //** Fixed Locators Store landing Page **/
     this.tabHome = page.getByRole("button", { name: "Home" });
     this.tabInventory = page.getByRole("button", { name: "Inventory" });
     this.tabCatalog = page.getByRole("button", { name: "Catalog" });
-    this.tabCart = page.getByTestId("store-tab-cart");
-    this.tabPayments = page.getByRole("button", { name: "Payments" });
+    this.tabCart = page.getByTestId("store-tab-cart"); 
+    this.tabPayments = page.getByTestId("store-tab-payments");
     this.tabOrders = page.getByRole("button", { name: "Orders" });
 
     this.storeHomePage = page.getByTestId("store-page");
@@ -68,4 +70,6 @@ export class StorePage {
       await expect(this.ordersPage).toBeVisible();
     });
   }
+
+  
 }

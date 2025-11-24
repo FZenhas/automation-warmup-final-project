@@ -1,7 +1,7 @@
 import { test } from "@playwright/test";
 import { StorePage } from "./pages/store.page";
 import { InventoryPage } from "./pages/inventory.page";
-import { ADD_PRODUCTS, PRODUCTS_QUANTITY } from "./data/store.data";
+import { ADD_PRODUCTS, PRODUCTS_QUANTITY } from "./data/inventory.data";
 
 test.describe("Add Products to Inventory", () => {
   test("Add all products to Inventory and verify", async ({ page }) => {

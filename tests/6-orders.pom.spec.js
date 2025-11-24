@@ -1,0 +1,19 @@
+import { test } from "@playwright/test";
+import { ORDER_DETAILS } from "./data/orders.data";
+import { OrdersPage } from "./pages/orders.page";
+import { StoreFlow } from "./pages/store-flow.page";
+
+test("Order page - validate order details", async ({ page }) => {
+  const order = new OrdersPage(page);
+  const flow = new StoreFlow(page);
+
+  // Este método executa todo o fluxo e coloca-te nos orders
+  await flow.goToOrdersDetails();
+
+ 
+await order.validateOrderDetails(
+    ORDER_DETAILS.orderIndex,
+    ORDER_DETAILS.products
+  );
+  
+});
