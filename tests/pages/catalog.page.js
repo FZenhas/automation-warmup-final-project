@@ -5,7 +5,7 @@ export class CatalogPage {
     this.page = page;
   }
 
-  // ======== ASSERT CUSTOMIZADA ========
+  /** Assertion to verify that the product is out of stock **/
   async expectProductOutOfStock(productIndex) {
     const addToCartButton = this.page.getByTestId(
       `catalog-item-add-button-${productIndex}`
@@ -15,7 +15,7 @@ export class CatalogPage {
     await expect(addToCartButton).toHaveText("Out of Stock");
   }
 
-  // ======== MÉTODO PRINCIPAL COM LOOP ========
+  /** Methods **/
   async addProducttoCart({ productName, productIndex, clickCount }) {
     await test.step(`Add product "${productName}" to Cart`, async () => {
       const addToCartButton = this.page.getByTestId(
@@ -27,7 +27,7 @@ export class CatalogPage {
       );
 
       for (let i = 0; i < clickCount; i++) {
-        // Se o botão já estiver desabilitado durante o loop
+        /** If the button turns disabled during the loop, it means the product has run out of stock **/
         if (await addToCartButton.isDisabled()) {
           await this.expectProductOutOfStock(productIndex);
           return;
@@ -37,11 +37,10 @@ export class CatalogPage {
         await expect(productItemQuantity).toBeVisible();
       }
 
-      // Após terminar o loop, validar se ficou sem estoque
+      /** After finishing the loop, validates that the stock is no longer available **/
       if (await addToCartButton.isDisabled()) {
         await this.expectProductOutOfStock(productIndex);
       }
     });
   }
-  
 }

@@ -5,6 +5,7 @@ export class OrdersPage {
     this.page = page;
   }
 
+  /** Dynamic Locators **/
   orderDate(orderIndex) {
     return this.page.getByTestId(`order-date-${orderIndex}`);
   }
@@ -14,38 +15,38 @@ export class OrdersPage {
   }
 
   orderItemName(orderIndex, productIndex) {
-    return this.page.getByTestId(`order-item-name-${orderIndex}-${productIndex}`);
+    return this.page.getByTestId(
+      `order-item-name-${orderIndex}-${productIndex}`
+    );
   }
 
-   orderTotalValue(orderIndex) {
+  orderTotalValue(orderIndex) {
     return this.page.getByTestId(`order-total-value-${orderIndex}`);
   }
 
+  /** Method to Validate all Order Details **/
 
-
-async validateOrderDetails(orderIndex, products) {
-  await test.step("Validate Order Details", async () => {
-    await test.step("Validate order date", async () => {
-      await expect(this.orderDate(orderIndex)).toBeVisible();
-    });
-
-    await test.step("Validate order payment method", async () => {
-      await expect(this.orderPaymentMethod(orderIndex)).toBeVisible();
-    });
-
-    for (const product of products) {
-      await test.step(`Validate product ${product.productName}`, async () => {
-        await expect(
-          this.orderItemName(orderIndex, product.productIndex)
-        ).toBeVisible();
+  async validateOrderDetails(orderIndex, products) {
+    await test.step("Validate Order Details", async () => {
+      await test.step("Validate Order Date", async () => {
+        await expect(this.orderDate(orderIndex)).toBeVisible();
       });
-    }
 
-    await test.step("Validate order total amount", async () => {
-      await expect(this.orderTotalValue(orderIndex)).toBeVisible();
+      await test.step("Validate Order Payment Method", async () => {
+        await expect(this.orderPaymentMethod(orderIndex)).toBeVisible();
+      });
+
+      for (const product of products) {
+        await test.step(`Validate Product: ${product.productName}`, async () => {
+          await expect(
+            this.orderItemName(orderIndex, product.productIndex)
+          ).toBeVisible();
+        });
+      }
+
+      await test.step("Validate Order Total Amount", async () => {
+        await expect(this.orderTotalValue(orderIndex)).toBeVisible();
+      });
     });
-  });
-}
-
-
+  }
 }

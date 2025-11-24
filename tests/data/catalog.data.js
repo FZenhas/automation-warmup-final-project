@@ -2,7 +2,7 @@ export const ADD_CART = [
  {
     productName: "Lightsaber (Star Wars)",
     productIndex: 0,
-    clickCount: 2
+    clickCount: 3
   },
   {
     productName: "Giant Rubber Duck",

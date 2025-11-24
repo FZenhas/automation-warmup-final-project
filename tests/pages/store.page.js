@@ -1,16 +1,14 @@
 import { expect, test } from "@playwright/test";
 
-
 export class StorePage {
   constructor(page) {
     this.page = page;
-   
 
     //** Fixed Locators Store landing Page **/
     this.tabHome = page.getByRole("button", { name: "Home" });
     this.tabInventory = page.getByRole("button", { name: "Inventory" });
     this.tabCatalog = page.getByRole("button", { name: "Catalog" });
-    this.tabCart = page.getByTestId("store-tab-cart"); 
+    this.tabCart = page.getByTestId("store-tab-cart");
     this.tabPayments = page.getByTestId("store-tab-payments");
     this.tabOrders = page.getByRole("button", { name: "Orders" });
 
@@ -22,7 +20,10 @@ export class StorePage {
     this.ordersPage = page.getByTestId("orders-page");
   }
 
-  //**Locators Inventory Tab **/
+
+// These methods handle navigation between different sections of the store, 
+// such as Home, Inventory, Catalog, Cart, Payments, and Orders pages. 
+// Each method clicks the corresponding tab and asserts that the target page is visible.
 
   async navigateToStore() {
     await test.step("Navigate to store page", async () => {
@@ -33,7 +34,6 @@ export class StorePage {
 
   async goToInventory() {
     await test.step("Navigate to Inventory Page", async () => {
-      // Clica na aba Inventory
       await this.tabInventory.click();
       await expect(this.inventoryPage).toBeVisible();
     });
@@ -41,7 +41,6 @@ export class StorePage {
 
   async goToCatalog() {
     await test.step("Navigate to Catalog Page", async () => {
-      // Clica na aba Inventory
       await this.tabCatalog.click();
       await expect(this.catalogPage).toBeVisible();
     });
@@ -49,7 +48,6 @@ export class StorePage {
 
   async goToCart() {
     await test.step("Navigate to Cart Page", async () => {
-      // Clica na aba Inventory
       await this.tabCart.click();
       await expect(this.cartPage).toBeVisible();
     });
@@ -57,7 +55,6 @@ export class StorePage {
 
   async goToPayments() {
     await test.step("Navigate to Payments Page", async () => {
-      // Clica na aba Inventory
       await this.tabPayments.click();
       await expect(this.paymentsPage).toBeVisible();
     });
@@ -65,11 +62,8 @@ export class StorePage {
 
   async goToOrders() {
     await test.step("Navigate to Orders Page", async () => {
-      // Clica na aba Inventory
       await this.tabOrders.click();
       await expect(this.ordersPage).toBeVisible();
     });
   }
-
-  
 }

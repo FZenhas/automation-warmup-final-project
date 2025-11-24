@@ -6,6 +6,8 @@ export class CartPage {
     this.cartTotalValue = page.getByTestId("cart-total-value");
   }
 
+  /** Dynamic locators **/ 
+
   productName(productIndex) {
     return this.page.getByTestId(`cart-item-name-${productIndex}`);
   }
@@ -22,16 +24,21 @@ export class CartPage {
     return this.page.getByTestId(`cart-item-total-value-${productIndex}`);
   }
 
+
+  /** Methods **/
+
   async verifyProductName(productIndex, productName) {
     await test.step("Verify Product Name: " + productName, async () => {
       await expect(this.productName(productIndex)).toBeVisible();
     });
   }
+
   async verifyProductPrice(productIndex, productPrice) {
     await test.step("Verify Product Price: " + productPrice + "€", async () => {
       await expect(this.productPrice(productIndex)).toBeVisible();
     });
   }
+  
   async verifyProductQuantity(productIndex, productQuantity) {
     await test.step(
       "Verify Product Quantity: " + productQuantity + "€",
@@ -40,6 +47,7 @@ export class CartPage {
       }
     );
   }
+  
   async verifyProductTotal(productIndex, productPriceTotal) {
     await test.step(
       "Verify Product Total: " + productPriceTotal + "€",

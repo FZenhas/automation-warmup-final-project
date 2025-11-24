@@ -5,7 +5,7 @@ import { CART_PRODS } from "./data/cart.data";
 import { ADD_CART } from "./data/catalog.data";
 import { CartPage } from "./pages/cart.page";
 
-
+test.describe("Cart Page", () => {
  for (const prod of CART_PRODS) {
    test("Added to the Cart: " + prod.productName + " - " + prod.productQuantity + " items", async ({ page }) => {
    const cart = new CartPage(page);
@@ -27,7 +27,7 @@ import { CartPage } from "./pages/cart.page";
    await store.goToPayments();
    });
  }
-
+});
 
 // test("Verify all products added to the cart", async ({ page }) => {
 //   const flow = new StoreFlow(page);

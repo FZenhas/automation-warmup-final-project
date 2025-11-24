@@ -8,8 +8,8 @@ export const ADD_PRODUCTS = [
   {
     scenario: "Product B",
     productName: "Zero-Calorie Burger Illusion Kit",
-    productPrice: "14",
-    productQuantity: "14",
+    productPrice: "8",
+    productQuantity: "17",
   },
   {
     scenario: "Product C",

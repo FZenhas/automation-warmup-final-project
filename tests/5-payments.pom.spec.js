@@ -3,40 +3,43 @@ import { StoreFlow } from "./pages/store-flow.page";
 import { PaymentPage } from "./pages/payments.page";
 import { StorePage } from "./pages/store.page";
 import { CART_PRODS } from "./data/cart.data";
-import { ADD_CART } from "./data/catalog.data";
 
-test("Validate empty payment", async ({ page }) => {
-  const flow = new StoreFlow(page);
-  const payment = new PaymentPage(page);
+test.describe("Payment Page", () => {
 
-  // Este método executa todo o fluxo e coloca-te nos Payments
-  await flow.goToPaymentsWithProducts();
+  test("Validate Payment Information", async ({ page }) => {
+    const flow = new StoreFlow(page);
+    const payment = new PaymentPage(page);
 
-  await payment.validateEmptyPayment();
-});
+    /** This method runs the entire flow up to the payments **/ 
+    await flow.goToPaymentsWithProducts();
 
-test("Payment page - validate information", async ({ page }) => {
-  const flow = new StoreFlow(page);
-  const payment = new PaymentPage(page);
+    for (const prod of CART_PRODS) {
+      await payment.validatePaymentSummary(prod.productIndex, prod.productName);
+    }
 
-  // Este método executa todo o fluxo e coloca-te nos Payments
-  await flow.goToPaymentsWithProducts();
+    await payment.verifyTotalPayment();
+    await payment.validatePaymentMethodSection();
+  });
 
-  for (const prod of CART_PRODS){
-    await payment.validatePaymentSummary(prod.productIndex, prod.productName);
-  }
+  test("Click to Confirm Payment with no Payment Adeed", async ({ page }) => {
+    const flow = new StoreFlow(page);
+    const payment = new PaymentPage(page);
 
-  await payment.verifyTotalPayment();
-  await payment.validatePaymentMethodSection();
-});
+    /** This method runs the entire flow up to the payments **/ 
+    await flow.goToPaymentsWithProducts();
 
-test("Payment page - Choose Payment and Confirm", async ({ page }) => {
-  const flow = new StoreFlow(page);
-  const payment = new PaymentPage(page);
-  const store = new StorePage(page);
+    await payment.validateEmptyPayment();
+  });
 
-  // Este método executa todo o fluxo e coloca-te nos Payments
-  await flow.goToPaymentsWithProducts();
-  await payment.confirmPayment();
-  await store.goToOrders();
+  test("Choose Payment Method and Confirm", async ({ page }) => {
+    const flow = new StoreFlow(page);
+    const payment = new PaymentPage(page);
+    const store = new StorePage(page);
+
+    /** This method runs the entire flow up to the payments **/ 
+    await flow.goToPaymentsWithProducts();
+    
+    await payment.confirmPayment();
+    await store.goToOrders();
+  });
 });
