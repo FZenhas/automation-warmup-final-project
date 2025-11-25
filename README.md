@@ -1,4 +1,9 @@
-# Final Project – Test Automation with Playwright
+# Final Project – Test Automation Warm-Up with Playwright
+
+This is my final project of the course **"Test Automation Warm-Up with Playwright"** at **Mindera Code Academy**.
+
+This project aims to provide test coverage of the core Store features, including **Inventory, Catalog, Cart, Payment, and Orders**.
+
 
 ## Base URL for Tests  
 The automated tests are designed to run against the following base website:  
@@ -54,4 +59,88 @@ To run the automated tests, you can use the Playwright commands:
 
 - **Show the test report in a browser:**  
   📋 `npx playwright show-report`
+
+
+
+# Store Test Scenarios
+
+## Store
+### Validate navigation across the store
+- Start on Home page → ensure page loads correctly
+- Navigate to Inventory page → ensure page loads correctly
+- Navigate to Catalog page → ensure page loads correctly
+- Navigate to Cart page → ensure page loads correctly
+- Navigate to Payment page → ensure page loads correctly
+- Navigate to Orders page → ensure page loads correctly
+
+---
+
+## Inventory
+### Add a new product and verify
+- Go to Inventory page
+- Fill in Name, Price, Quantity
+- Click “Add Product”
+- Product appears in the bottom of the inventory
+
+### Adjust stock quantity
+- Given a product exists
+- Click “+” → quantity increases by 1
+- Click “–” → quantity decreases by 1
+
+---
+
+## Catalog
+### Add an item to the cart
+- Go to Catalog page
+- Click “Add to Cart”
+- Item quantity decreases in Catalog
+- Item appears in Cart page
+
+## Prevent adding out-of-stock items
+- If item quantity is 0
+- “Add to Cart” button shows “Out of Stock”
+- Item cannot be added to the cart
+---
+## Cart
+### Display cart items and totals and Proceed to Payment step
+- Have items in the cart
+- Go to Cart page
+- Each item shows name, quantity, and subtotal
+- Show total amount
+- Click “Go to Payments”
+- Redirected to Payment page
+
+---
+
+## Payment
+### Validate payment summary
+- Have items in the cart
+- Go to Payment page
+- Summary shows each item’s name, quantity, and subtotal
+- Total amount is displayed at the bottom
+
+### Block payment without method
+- Have items in the cart
+- Click “Confirm Payment” without selecting a method
+- Alert appears
+- Payment is not completed
+
+### Complete a purchase
+- Select a payment method
+- Click “Confirm Payment”
+- Order is created
+- Redirected to Orders page
+
+---
+
+## Orders
+### Display order details
+- Given an order exists
+- View the order
+- Order shows:
+  - Date
+  - Payment method
+  - Items (name + quantity)
+  - Final total
+
 
