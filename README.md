@@ -6,9 +6,17 @@ This project aims to provide test coverage of the core Store features, including
 
 
 ## Base URL for Tests  
-The automated tests are designed to run against the following base website:  
+The automated tests were designed to run against the following base website. 
+This website was developed by the course instructor, **Bruno Machado**.
+
 https://playground-drab-six.vercel.app/
 
+---
+## Project Setup
+For the installation of the project, I used the following command:
+```bash
+npm init playwright@latest
+```
 ---
 
 ## Project Structure
@@ -142,5 +150,6 @@ To run the automated tests, you can use the Playwright commands:
   - Payment method
   - Items (name + quantity)
   - Final total
+
 
 
