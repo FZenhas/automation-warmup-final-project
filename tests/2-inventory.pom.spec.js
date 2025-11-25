@@ -17,7 +17,7 @@ test.describe("Inventory Page", () => {
     }
   });
 
-  test("Increase / Decrease Product Quantities", async ({ page }) => {
+  test("Increase / Decrease Stock Quantities", async ({ page }) => {
     const store = new StorePage(page);
     const inventory = new InventoryPage(page);
 

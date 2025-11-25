@@ -7,7 +7,7 @@ import { CartPage } from "./pages/cart.page";
 
 test.describe("Cart Page", () => {
  for (const prod of CART_PRODS) {
-   test("Added to the Cart: " + prod.productName + " - " + prod.productQuantity + " items", async ({ page }) => {
+   test("Items added to Cart: " + prod.productName + " - Qtty: " + prod.productQuantity + " items", async ({ page }) => {
    const cart = new CartPage(page);
    const store = new StorePage(page);
    const catalog = new CatalogPage(page);
@@ -28,13 +28,3 @@ test.describe("Cart Page", () => {
    });
  }
 });
-
-// test("Verify all products added to the cart", async ({ page }) => {
-//   const flow = new StoreFlow(page);
-
-//   const cart = await flow.addProductsAndGoToCart();
-
-//   for (const prod of CART_PRODS) {
-//     await cart.verifyProduct(prod.productIndex, prod.productName);
-//   }
-// });

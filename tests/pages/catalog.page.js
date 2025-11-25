@@ -7,12 +7,14 @@ export class CatalogPage {
 
   /** Assertion to verify that the product is out of stock **/
   async expectProductOutOfStock(productIndex) {
-    const addToCartButton = this.page.getByTestId(
-      `catalog-item-add-button-${productIndex}`
-    );
+    test.step("Product is out of stock", async () => {
+      const addToCartButton = this.page.getByTestId(
+        `catalog-item-add-button-${productIndex}`
+      );
 
-    await expect(addToCartButton).toBeDisabled();
-    await expect(addToCartButton).toHaveText("Out of Stock");
+      await expect(addToCartButton).toBeDisabled();
+      await expect(addToCartButton).toHaveText("Out of Stock");
+    });
   }
 
   /** Methods **/

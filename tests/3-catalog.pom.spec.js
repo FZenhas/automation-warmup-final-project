@@ -4,7 +4,7 @@ import { CatalogPage } from "./pages/catalog.page";
 import { ADD_CART } from "./data/catalog.data";
 
 test.describe("Store Catalog", () => {
-  test("Add Products to The Cart", async ({ page }) => {
+  test("Add Products to The Cart and check out-of-stock items", async ({ page }) => {
     const catalog = new CatalogPage(page);
     const store = new StorePage(page);
 

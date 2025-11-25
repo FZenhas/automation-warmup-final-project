@@ -39,13 +39,27 @@ export class PaymentPage {
     await expect(this.root).toBeVisible();
   }
 
-  /** Validates the payment summary section for a specific product **/
+  /**
+   ** Validates the payment summary section for a specific product
+   ** Regarding the Name, Quantity, Price and Total Price
+   **/
   async validatePaymentSummary(productIndex, productName) {
-    await test.step("Product: " + productName, async () => {
-      await expect(this.productName(productIndex)).toBeVisible();
-      await expect(this.productQuantity(productIndex)).toBeVisible();
-      await expect(this.productPrice(productIndex)).toBeVisible();
-      await expect(this.productPriceTotal(productIndex)).toBeVisible();
+    await test.step(`Confirm ${productName} information:`, async () => {
+      await test.step("Check product name", async () => {
+        await expect(this.productName(productIndex)).toBeVisible();
+      });
+
+      await test.step("Check product quantity", async () => {
+        await expect(this.productQuantity(productIndex)).toBeVisible();
+      });
+
+      await test.step("Check product price", async () => {
+        await expect(this.productPrice(productIndex)).toBeVisible();
+      });
+
+      await test.step("Check product total price", async () => {
+        await expect(this.productPriceTotal(productIndex)).toBeVisible();
+      });
     });
   }
 

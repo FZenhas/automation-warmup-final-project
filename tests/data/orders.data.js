@@ -1,10 +1,5 @@
-
-const now = new Date();
-const formattedDate = now.toISOString().split('T')[0]; // YYYY-MM-DD
-
 export const ORDER_DETAILS = {
   orderIndex: 0,
-  orderDate: formattedDate,
   paymentMethod: "PayPal",
   products: [
     { productIndex: 0, productName: "Lightsaber (Star Wars)" },
