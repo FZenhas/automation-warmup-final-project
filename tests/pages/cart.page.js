@@ -41,7 +41,7 @@ export class CartPage {
   
   async verifyProductQuantity(productIndex, productQuantity) {
     await test.step(
-      "Verify Product Quantity: " + productQuantity + "€",
+      "Verify Product Quantity: " + productQuantity,
       async () => {
         await expect(this.productQuantity(productIndex)).toBeVisible();
       }
